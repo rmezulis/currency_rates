@@ -1,4 +1,8 @@
 
-app_route_name:
-  path: /
-  controller: App\Controller\RatesController::index
+single_rate:
+  path: /currency/{id}
+  controller: App\Controller\CurrencyController::single
+all_rates:
+  path: /{page}/{date}
+  controller: App\Controller\CurrencyController::all
+  defaults: {page: 1, date: ''}

@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    {% block title %}{{ currency.name }}{% endblock %}
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{ currency.name }}</h5>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Rate</th>
+                    <th>Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for rate in currency.rates %}
+                    <tr>
+                        <td>{{ rate.value }}</td>
+                        <td>{{ rate.date.format('Y-m-d') }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

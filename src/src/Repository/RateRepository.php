@@ -19,6 +19,18 @@ class RateRepository extends ServiceEntityRepository
         parent::__construct($registry, Rate::class);
     }
 
+    public function findByDate(string $date)
+    {
+        return $this->createQueryBuilder('r')
+            ->andWhere('r.date >= :from')
+            ->andWhere('r.date <= :to')
+            ->setParameter('from', $date . ' 00:00:00')
+            ->setParameter('to', $date . ' 23:59:59')
+            ->orderBy('r.id', 'ASC')
+            ->getQuery()
+            ;
+    }
+
     // /**
     //  * @return Rate[] Returns an array of Rate objects
     //  */

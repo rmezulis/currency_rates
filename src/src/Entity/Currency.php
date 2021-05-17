@@ -6,6 +6,7 @@ use App\Repository\CurrencyRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\OrderBy;
 
 /**
  * @ORM\Entity(repositoryClass=CurrencyRepository::class)
@@ -26,6 +27,7 @@ class Currency
 
     /**
      * @ORM\OneToMany(targetEntity=Rate::class, mappedBy="currency", orphanRemoval=true)
+     * @OrderBy({"date" = "DESC"})
      */
     private $rates;
 
